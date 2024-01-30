@@ -171,6 +171,7 @@ class IndexerTest(parameterized.TestCase):
   @hp.given(hps.data())
   def test_ndindexer(self, data):
     shape = data.draw(hnp.array_shapes())
+    print(shape)
     indexer = data.draw(nd_indexer_strategy(shape))
     is_int_indexer = [not isinstance(idx, Slice) for idx in indexer.indices]
     rest_indexers, int_indexers = util.partition_list(
